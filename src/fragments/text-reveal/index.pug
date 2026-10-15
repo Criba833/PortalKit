@@ -1,0 +1,9 @@
+extends /views/layouts/fragment.pug
+
+block vars
+  - var title = 'Fragment: text-reveal'
+
+block content
+  section.pk-text-reveal.container.py-5
+    +editableText('text-reveal-title', 'h2')
+      | Juntos creamos progreso compartido

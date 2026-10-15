@@ -1,0 +1,102 @@
+.gsap-horizontal-section {
+  --horizontal-ink: #f4f1e8;
+  --horizontal-muted: #a7aaa4;
+  --horizontal-accent: #e5ff4f;
+  --horizontal-surface: #171914;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0d0e0b;
+  color: var(--horizontal-ink);
+}
+
+.gsap-horizontal-track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  min-height: 100vh;
+}
+
+.gsap-horizontal-panel {
+  position: relative;
+  display: flex;
+  flex: 0 0 min(78vw, 980px);
+  min-height: 100vh;
+  align-items: center;
+  padding: clamp(2rem, 7vw, 7rem);
+  background: var(--horizontal-surface);
+  border-right: 1px solid rgba(244, 241, 232, 0.18);
+}
+.gsap-horizontal-panel:nth-child(odd) {
+  background: #24271e;
+}
+.gsap-horizontal-panel--intro, .gsap-horizontal-panel--outro {
+  flex-basis: min(64vw, 760px);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.gsap-horizontal-panel--accent {
+  background: var(--horizontal-accent);
+  color: #10120d;
+}
+.gsap-horizontal-panel h2 {
+  max-width: 10ch;
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+.gsap-horizontal-panel p {
+  max-width: 28rem;
+  margin: 0;
+  color: var(--horizontal-muted);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.5;
+}
+.gsap-horizontal-panel--accent p {
+  color: #3e4927;
+}
+
+.gsap-horizontal-kicker,
+.gsap-horizontal-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gsap-horizontal-kicker {
+  color: var(--horizontal-accent);
+}
+
+.gsap-horizontal-panel--accent .gsap-horizontal-kicker {
+  color: #596d25;
+}
+
+.gsap-horizontal-number {
+  position: absolute;
+  top: clamp(2rem, 7vw, 7rem);
+  left: clamp(2rem, 7vw, 7rem);
+  color: var(--horizontal-accent);
+}
+
+.gsap-horizontal-panel--accent .gsap-horizontal-number {
+  color: #10120d;
+}
+
+@media (width <= 767px) {
+  .gsap-horizontal-panel,
+  .gsap-horizontal-panel--intro,
+  .gsap-horizontal-panel--outro {
+    flex-basis: 88vw;
+    padding: 2rem;
+  }
+  .gsap-horizontal-panel h2 {
+    font-size: clamp(2.75rem, 15vw, 5rem);
+  }
+  .gsap-horizontal-number {
+    top: 2rem;
+    left: 2rem;
+  }
+}

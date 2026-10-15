@@ -1,0 +1,13 @@
+.gsap-fade-up .line {
+  display: block;
+  overflow: hidden;
+}
+
+.gsap-fade-up .word,
+.gsap-fade-up .char {
+  display: inline-block;
+}
+
+.gsap-fade-up .char {
+  will-change: transform, opacity;
+}

@@ -1,0 +1,37 @@
+extends /views/layouts/page.pug
+
+block vars
+  - var title = 'PortalKit — Preview'
+
+block content
+
+  .preview-header
+    h1 PortalKit
+    p Selecciona un fragment o web content para previsualizar
+
+  p.preview-section-title Fragments
+  .preview-grid
+    a.card(href="/fragments/pk-header/")
+      span.card__name pk-header
+      span.card__tag fragment
+    a.card(href="/fragments/pk-hero/")
+      span.card__name pk-hero
+      span.card__tag fragment
+    a.card(href="/fragments/pk-display-text/")
+      span.card__name pk-display-text
+      span.card__tag fragment
+    a.card(href="/fragments/horizontal-scroll/")
+      span.card__name horizontal-scroll
+      span.card__tag fragment
+    a.card(href="/fragments/story-scroll/")
+      span.card__name story-scroll
+      span.card__tag fragment
+    a.card(href="/fragments/text-reveal/")
+      span.card__name text-reveal
+      span.card__tag fragment
+
+  p.preview-section-title Web Content
+  .preview-grid
+    a.card(href="/web-content/pk-accordion/")
+      span.card__name pk-accordion
+      span.card__tag.card__tag--wc web-content

@@ -1,0 +1,25 @@
+{
+	"fieldSets": [
+		{
+			"label": "Navigation",
+			"fields": [
+				{
+					"name": "source",
+					"label": "Navigation Menu",
+					"type": "navigationMenuSelector"
+				}
+			]
+		},
+		{
+			"label": "CTA",
+			"fields": [
+				{
+					"name": "showCta",
+					"label": "Mostrar CTA",
+					"type": "checkbox",
+					"defaultValue": true
+				}
+			]
+		}
+	]
+}

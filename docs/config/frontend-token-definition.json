@@ -1,0 +1,28 @@
+{
+  "frontendTokenCategories": [
+    {
+      "frontendTokenSets": [
+        {
+          "frontendTokens": [
+            {
+              "defaultValue": "Montserrat, sans-serif",
+              "label": "font-family-base",
+              "mappings": [
+                {
+                  "type": "cssVariable",
+                  "value": "font-family-base"
+                }
+              ],
+              "name": "fontFamilyBase",
+              "type": "String"
+            }
+          ],
+          "label": "font-family",
+          "name": "fontFamily"
+        }
+      ],
+      "label": "typography",
+      "name": "typography"
+    }
+  ]
+}

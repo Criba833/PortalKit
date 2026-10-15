@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pk-header</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap.css">
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <header class="pk-header">
+      <div class="pk-header__scroll-progress"></div>
+      <div class="pk-header__container pk-container"><a class="pk-header__logo" href="/" aria-label="PortalKit"><img class="pk-header__logo-image" src="/img/logo-portal-kit.png" alt="PortalKit"></a>
+        <nav class="pk-header__navigation" aria-label="Navegación principal">
+          <ul class="pk-header__menu">
+            <li class="pk-header__item"><a class="pk-header__link" href="#">Servicios</a></li>
+            <li class="pk-header__item has-submenu"><a class="pk-header__link" href="#" aria-haspopup="true" aria-expanded="false"><span>Nosotros</span><i class="bi bi-chevron-down pk-header__arrow" aria-hidden="true"></i></a>
+              <ul class="pk-header__submenu">
+                <li class="pk-header__submenu-item"><a class="pk-header__submenu-link" href="#">Quiénes somos</a></li>
+                <li class="pk-header__submenu-item"><a class="pk-header__submenu-link" href="#">Equipo</a></li>
+              </ul>
+            </li>
+            <li class="pk-header__item"><a class="pk-header__link" href="#">Contacto</a></li>
+          </ul>
+        </nav><a class="pk-header__cta" href="#">Qué hacemos<i class="bi bi-arrow-up-right"></i></a>
+        <button class="pk-header__toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
+      </div>
+    </header>
+  </body>
+</html>

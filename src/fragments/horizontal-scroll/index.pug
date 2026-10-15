@@ -1,0 +1,38 @@
+extends /views/layouts/fragment.pug
+
+block vars
+  - var title = 'Fragment: horizontal-scroll'
+
+block content
+  section.gsap-horizontal-section(data-gsap-horizontal)
+    .gsap-horizontal-track(data-gsap-horizontal-track)
+
+      article.gsap-horizontal-panel.gsap-horizontal-panel--intro
+        span.gsap-horizontal-kicker Scroll
+        +editableText('intro-title', 'h2') Keep going
+        +editableText('intro-text') Una galería horizontal impulsada por el scroll vertical.
+
+      article.gsap-horizontal-panel
+        span.gsap-horizontal-number 01
+        div
+          span.gsap-horizontal-kicker Depth
+          +editableText('panel-1-title', 'h2') Parallax depth
+          +editableText('panel-1-text') Capas que se desplazan con distintas velocidades.
+
+      article.gsap-horizontal-panel.gsap-horizontal-panel--accent
+        span.gsap-horizontal-number 02
+        div
+          span.gsap-horizontal-kicker Motion
+          +editableText('panel-2-title', 'h2') Kinetic type
+          +editableText('panel-2-text') Texto, ritmo y espacio convertidos en recorrido.
+
+      article.gsap-horizontal-panel
+        span.gsap-horizontal-number 03
+        div
+          span.gsap-horizontal-kicker System
+          +editableText('panel-3-title', 'h2') Card cascade
+          +editableText('panel-3-text') Un canvas editorial para mostrar efectos en secuencia.
+
+      article.gsap-horizontal-panel.gsap-horizontal-panel--outro
+        span.gsap-horizontal-kicker End of track
+        +editableText('outro-title', 'h2') Keep exploring

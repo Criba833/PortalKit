@@ -1,0 +1,40 @@
+extends /views/layouts/fragment.pug
+
+block vars
+  - var title = 'pk-header'
+
+block content
+  header.pk-header
+
+    .pk-header__scroll-progress
+
+    .pk-header__container.pk-container
+
+      a.pk-header__logo(href="/" aria-label="PortalKit")
+        img.pk-header__logo-image(src="/img/logo-portal-kit.png" alt="PortalKit")
+
+      nav.pk-header__navigation(aria-label="Navegación principal")
+        ul.pk-header__menu
+
+          li.pk-header__item
+            a.pk-header__link(href="#") Servicios
+
+          li.pk-header__item.has-submenu
+            a.pk-header__link(href="#" aria-haspopup="true" aria-expanded="false")
+              span Nosotros
+              i.bi.bi-chevron-down.pk-header__arrow(aria-hidden="true")
+            ul.pk-header__submenu
+              li.pk-header__submenu-item
+                a.pk-header__submenu-link(href="#") Quiénes somos
+              li.pk-header__submenu-item
+                a.pk-header__submenu-link(href="#") Equipo
+
+          li.pk-header__item
+            a.pk-header__link(href="#") Contacto
+
+      a.pk-header__cta(href="#")
+        | Qué hacemos
+        i.bi.bi-arrow-up-right
+
+      button.pk-header__toggle(type="button" aria-label="Abrir menú" aria-expanded="false")
+        i.bi.bi-list(aria-hidden="true")

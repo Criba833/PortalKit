@@ -1,0 +1,79 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #07122f;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.preview-header {
+  padding: 40px 40px 0;
+}
+.preview-header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.preview-header p {
+  color: #8898aa;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.preview-section-title {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4a5568;
+  padding: 0 40px;
+  margin-top: 8px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  padding: 32px 40px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 18px 20px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.card:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+}
+.card__name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.card__tag {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  background: rgba(27, 63, 217, 0.35);
+  border: 1px solid rgba(27, 63, 217, 0.5);
+  border-radius: 4px;
+  padding: 2px 7px;
+  color: #93aaff;
+  margin-top: 2px;
+}
+.card__tag--wc {
+  background: rgba(247, 39, 23, 0.2);
+  border-color: rgba(247, 39, 23, 0.4);
+  color: #ff9a93;
+}

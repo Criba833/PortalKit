@@ -1,0 +1,106 @@
+{
+	"fieldSets": [
+		{
+			"label": "Cabecera y General",
+			"fields": [
+				{
+					"name": "chapterNumber",
+					"label": "Kicker / Número de capítulo",
+					"description": "Texto del kicker superior izquierdo (ej. 02 / LA IDEA)",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "02 / LA IDEA"
+				},
+				{
+					"name": "progressLabel",
+					"label": "Etiqueta de progreso",
+					"description": "Texto superior derecho (ej. DESPLÁZATE PARA CONECTAR)",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "DESPLÁZATE PARA CONECTAR"
+				}
+			]
+		},
+		{
+			"label": "Paso 1",
+			"fields": [
+				{
+					"name": "step1Tag",
+					"label": "Subtítulo / Paso (Ej: 01 — UN PUNTO DE PARTIDA)",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "01 — UN PUNTO DE PARTIDA"
+				},
+				{
+					"name": "step1Title",
+					"label": "Título",
+					"description": "Soporta texto y etiquetas HTML como <br> y <em>",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "Todo empieza<br>con un <em>reto.</em>"
+				},
+				{
+					"name": "step1Text",
+					"label": "Descripción / Párrafo",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "Las necesidades cambian. Nuestra manera de responder empieza por entender qué debe avanzar."
+				}
+			]
+		},
+		{
+			"label": "Paso 2",
+			"fields": [
+				{
+					"name": "step2Tag",
+					"label": "Subtítulo / Paso (Ej: 02 — MUCHAS CAPACIDADES)",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "02 — MUCHAS CAPACIDADES"
+				},
+				{
+					"name": "step2Title",
+					"label": "Título",
+					"description": "Soporta texto y etiquetas HTML como <br> y <em>",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "Un reto conecta<br><em>muchas fuerzas.</em>"
+				},
+				{
+					"name": "step2Text",
+					"label": "Descripción / Párrafo",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "Innovación, servicios compartidos, ciberseguridad y estrategia: distintas capacidades alrededor de una misma necesidad."
+				}
+			]
+		},
+		{
+			"label": "Paso 3",
+			"fields": [
+				{
+					"name": "step3Tag",
+					"label": "Subtítulo / Paso (Ej: 03 — UNA DIRECCIÓN)",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "03 — UNA DIRECCIÓN"
+				},
+				{
+					"name": "step3Title",
+					"label": "Título",
+					"description": "Soporta texto y etiquetas HTML como <br> y <em>",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "Juntos creamos<br><em>progreso compartido.</em>"
+				},
+				{
+					"name": "step3Text",
+					"label": "Descripción / Párrafo",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "Una forma de impulsar la evolución de las organizaciones participantes."
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,17 @@
+.pk-display-text {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: var(--pk-font-size-desktop);
+  font-weight: var(--pk-font-weight);
+  line-height: var(--pk-line-height-desktop);
+  letter-spacing: var(--pk-letter-spacing-desktop);
+}
+
+@media (width <= 767px) {
+  .pk-display-text {
+    line-height: var(--pk-line-height-mobile);
+    letter-spacing: var(--pk-letter-spacing-mobile);
+  }
+}

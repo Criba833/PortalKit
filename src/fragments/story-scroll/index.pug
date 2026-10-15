@@ -1,0 +1,71 @@
+extends /views/layouts/fragment.pug
+
+block vars
+  - var title = 'Fragment: story-scroll'
+
+block content
+  section.story#story-preview(
+    data-story-scroll
+    data-chapter="02"
+    aria-label="Cómo se construye el progreso compartido"
+  )
+    .story__track
+      .story__stage(data-phase="0")
+
+        img.story__atmosphere(
+          src="/img/onda-2026.jpg"
+          alt="Fondo background PortalKit"
+          data-lfr-editable-id="story-atmosphere"
+          data-lfr-editable-type="image"
+        )
+
+        .story__rings(aria-hidden="true")
+          span
+          span
+          span
+
+        .story__brand(aria-hidden="true")
+          img(
+            src="/img/logo-portal-kit.png"
+            width="973"
+            height="333"
+            alt="Logo PortalKit"
+            data-lfr-editable-id="story-brand"
+            data-lfr-editable-type="image"
+          )
+
+        .container
+          .story__top
+            span.kicker 02 / LA IDEA
+            span.story__progress-label DESPLÁZATE PARA CONECTAR
+
+          .story__beats
+
+            .story__beat.is-active(data-story-beat="0")
+              span.story__step 01 — UN PUNTO DE PARTIDA
+              h2
+                | Todo empieza
+                br
+                | con un #[em reto.]
+              p Las necesidades cambian. Nuestra manera de responder empieza por entender qué debe avanzar.
+
+            .story__beat(data-story-beat="1")
+              span.story__step 02 — MUCHAS CAPACIDADES
+              h2
+                | Un reto conecta
+                br
+                em muchas fuerzas.
+              p Innovación, servicios compartidos, ciberseguridad y estrategia: distintas capacidades alrededor de una misma necesidad.
+
+            .story__beat(data-story-beat="2")
+              span.story__step 03 — UNA DIRECCIÓN
+              h2
+                | Juntos creamos
+                br
+                em progreso compartido.
+              p Una forma de impulsar la evolución de las organizaciones participantes.
+
+          .story__meter(role="group" aria-label="Pasos de la historia")
+            button.is-active(type="button" data-story-step="0" aria-pressed="true" aria-label="Paso 1")
+            button(type="button" data-story-step="1" aria-pressed="false" aria-label="Paso 2")
+            button(type="button" data-story-step="2" aria-pressed="false" aria-label="Paso 3")

@@ -1,0 +1,32 @@
+//- Texto editable en Liferay
+//- Uso: +editableText('my-id', 'h2') Mi texto
+mixin editableText(id, tag)
+  - var tag = tag || 'p'
+  #{tag}(data-lfr-editable-id=id data-lfr-editable-type="text")
+    block
+
+//- Imagen editable en Liferay
+//- Uso: +editableImage('my-id', '/img/placeholder.jpg', 'Alt text')
+mixin editableImage(id, src, alt)
+  img(
+    data-lfr-editable-id=id
+    data-lfr-editable-type="image"
+    src=src || ''
+    alt=alt || ''
+  )
+
+//- Enlace editable en Liferay
+//- Uso: +editableLink('my-id', '#') Texto del enlace
+mixin editableLink(id, href)
+  a(
+    data-lfr-editable-id=id
+    data-lfr-editable-type="link"
+    href=href || '#'
+  )
+    block
+
+//- Rich text editable en Liferay
+//- Uso: +editableRichText('my-id') <p>Contenido</p>
+mixin editableRichText(id)
+  div(data-lfr-editable-id=id data-lfr-editable-type="rich-text")
+    block

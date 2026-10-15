@@ -1,0 +1,21 @@
+/* Shared responsive container used by the PortalKit header and accordion. */
+.pk-container {
+  box-sizing: border-box;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--spacer-3);
+  padding-left: var(--spacer-3);
+}
+
+@media (width >= 768px) {
+  .pk-container { max-width: var(--container-max-md); }
+}
+
+@media (width >= 992px) {
+  .pk-container { max-width: var(--container-max-lg); }
+}
+
+@media (width >= 1200px) {
+  .pk-container { max-width: var(--container-max-xl); }
+}

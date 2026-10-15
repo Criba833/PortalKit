@@ -1,0 +1,96 @@
+{
+	"fieldSets": [
+		{
+			"label": "Tipografía",
+			"fields": [
+				{
+					"name": "textTag",
+					"label": "Etiqueta",
+					"type": "select",
+					"dataType": "string",
+					"defaultValue": "h1",
+					"typeOptions": {
+						"validValues": [
+							{ "label": "H1", "value": "h1" },
+							{ "label": "H2", "value": "h2" },
+							{ "label": "H3", "value": "h3" },
+							{ "label": "H4", "value": "h4" },
+							{ "label": "H5", "value": "h5" },
+							{ "label": "H6", "value": "h6" },
+							{ "label": "Párrafo", "value": "p" }
+						]
+					}
+				},
+				{
+					"name": "fontSizeMin",
+					"label": "Tamaño mínimo",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "4rem"
+				},
+				{
+					"name": "fontSizeFluid",
+					"label": "Tamaño fluido",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "8vw + 1rem"
+				},
+				{
+					"name": "fontSizeMax",
+					"label": "Tamaño máximo",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "10.625rem"
+				},
+				{
+					"name": "fontWeight",
+					"label": "Grosor",
+					"type": "select",
+					"dataType": "string",
+					"defaultValue": "800",
+					"typeOptions": {
+						"validValues": [
+							{ "label": "100 - Fino", "value": "100" },
+							{ "label": "200 - Extra ligero", "value": "200" },
+							{ "label": "300 - Ligero", "value": "300" },
+							{ "label": "400 - Normal", "value": "400" },
+							{ "label": "500 - Medio", "value": "500" },
+							{ "label": "600 - Seminegrita", "value": "600" },
+							{ "label": "700 - Negrita", "value": "700" },
+							{ "label": "800 - Extranegrita", "value": "800" },
+							{ "label": "900 - Negro", "value": "900" }
+						]
+					}
+				},
+				{
+					"name": "lineHeightDesktop",
+					"label": "Interlineado escritorio",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "0.85"
+				},
+				{
+					"name": "lineHeightMobile",
+					"label": "Interlineado móvil",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "0.9"
+				},
+				{
+					"name": "letterSpacingDesktop",
+					"label": "Espaciado escritorio (px)",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "0px"
+				},
+				{
+					"name": "letterSpacingMobile",
+					"label": "Espaciado móvil (px)",
+					"type": "text",
+					"dataType": "string",
+					"defaultValue": "0px"
+				}
+			]
+		}
+	]
+}

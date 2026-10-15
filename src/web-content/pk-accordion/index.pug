@@ -1,0 +1,53 @@
+extends /views/layouts/fragment.pug
+
+block vars
+  - var title = 'pk-accordion'
+
+block content
+
+  .pk-accordion-wrapper.pk-container.py-5
+    .pk-accordion
+
+      article.pk-accordion-item(data-accordion-item data-open="false")
+        .pk-accordion-header
+          span.pk-accordion-counter(aria-hidden="true") 01 / 03
+          h2.pk-accordion-title Primer item del accordion
+          button.pk-accordion-toggle(type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido")
+            i.bi.bi-x(aria-hidden="true")
+        .pk-accordion-content(data-accordion-panel aria-hidden="true")
+          h3.pk-accordion-subtitle Subtítulo del primer item
+          .pk-accordion-description
+            p Descripción del primer item del accordion. Aquí va el contenido detallado.
+
+      article.pk-accordion-item(data-accordion-item data-open="false")
+        .pk-accordion-header
+          span.pk-accordion-counter(aria-hidden="true") 02 / 03
+          h2.pk-accordion-title Segundo item del accordion
+          button.pk-accordion-toggle(type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido")
+            i.bi.bi-x(aria-hidden="true")
+        .pk-accordion-content(data-accordion-panel aria-hidden="true")
+          h3.pk-accordion-subtitle Subtítulo del segundo item
+          .pk-accordion-description
+            p Descripción del segundo item del accordion.
+
+      article.pk-accordion-item(data-accordion-item data-open="false")
+        .pk-accordion-header
+          span.pk-accordion-counter(aria-hidden="true") 03 / 03
+          h2.pk-accordion-title Tercer item del accordion
+          button.pk-accordion-toggle(type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido")
+            i.bi.bi-x(aria-hidden="true")
+        .pk-accordion-content(data-accordion-panel aria-hidden="true")
+          h3.pk-accordion-subtitle Subtítulo del tercer item
+          .pk-accordion-description
+            p Descripción del tercer item del accordion.
+
+      article.pk-accordion-item(data-accordion-item data-open="false")
+        .pk-accordion-header
+          span.pk-accordion-counter(aria-hidden="true") 04 / 04
+          h2.pk-accordion-title Cuarto item del accordion
+          button.pk-accordion-toggle(type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido")
+            i.bi.bi-x(aria-hidden="true")
+        .pk-accordion-content(data-accordion-panel aria-hidden="true")
+          h3.pk-accordion-subtitle Subtítulo del cuarta item
+          .pk-accordion-description
+            p Descripción del cuarta item del accordion.

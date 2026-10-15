@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pk-accordion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap.css">
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <div class="pk-accordion-wrapper pk-container py-5">
+      <div class="pk-accordion">
+        <article class="pk-accordion-item" data-accordion-item data-open="false">
+          <div class="pk-accordion-header"><span class="pk-accordion-counter" aria-hidden="true">01 / 03</span>
+            <h2 class="pk-accordion-title">Primer item del accordion</h2>
+            <button class="pk-accordion-toggle" type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido"><i class="bi bi-x" aria-hidden="true"></i></button>
+          </div>
+          <div class="pk-accordion-content" data-accordion-panel aria-hidden="true">
+            <h3 class="pk-accordion-subtitle">Subtítulo del primer item</h3>
+            <div class="pk-accordion-description">
+              <p>Descripción del primer item del accordion. Aquí va el contenido detallado.</p>
+            </div>
+          </div>
+        </article>
+        <article class="pk-accordion-item" data-accordion-item data-open="false">
+          <div class="pk-accordion-header"><span class="pk-accordion-counter" aria-hidden="true">02 / 03</span>
+            <h2 class="pk-accordion-title">Segundo item del accordion</h2>
+            <button class="pk-accordion-toggle" type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido"><i class="bi bi-x" aria-hidden="true"></i></button>
+          </div>
+          <div class="pk-accordion-content" data-accordion-panel aria-hidden="true">
+            <h3 class="pk-accordion-subtitle">Subtítulo del segundo item</h3>
+            <div class="pk-accordion-description">
+              <p>Descripción del segundo item del accordion.</p>
+            </div>
+          </div>
+        </article>
+        <article class="pk-accordion-item" data-accordion-item data-open="false">
+          <div class="pk-accordion-header"><span class="pk-accordion-counter" aria-hidden="true">03 / 03</span>
+            <h2 class="pk-accordion-title">Tercer item del accordion</h2>
+            <button class="pk-accordion-toggle" type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido"><i class="bi bi-x" aria-hidden="true"></i></button>
+          </div>
+          <div class="pk-accordion-content" data-accordion-panel aria-hidden="true">
+            <h3 class="pk-accordion-subtitle">Subtítulo del tercer item</h3>
+            <div class="pk-accordion-description">
+              <p>Descripción del tercer item del accordion.</p>
+            </div>
+          </div>
+        </article>
+        <article class="pk-accordion-item" data-accordion-item data-open="false">
+          <div class="pk-accordion-header"><span class="pk-accordion-counter" aria-hidden="true">04 / 04</span>
+            <h2 class="pk-accordion-title">Cuarto item del accordion</h2>
+            <button class="pk-accordion-toggle" type="button" data-accordion-toggle aria-expanded="false" aria-label="Abrir contenido"><i class="bi bi-x" aria-hidden="true"></i></button>
+          </div>
+          <div class="pk-accordion-content" data-accordion-panel aria-hidden="true">
+            <h3 class="pk-accordion-subtitle">Subtítulo del cuarta item</h3>
+            <div class="pk-accordion-description">
+              <p>Descripción del cuarta item del accordion.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
