@@ -2,10 +2,15 @@
  * _header.js — Lógica del componente pk-header
  * Importar desde el entry del fragment:
  *   import { initHeader } from '../../shared/js/_header.js'
+ *
+ * Recibe el nodo raíz desde el que resolver sus elementos. En la preview
+ * local es `document`; en Liferay el script.js equivalente resuelve desde
+ * `fragmentElement`. Así la lógica no queda atada a una selección global.
  */
+export function initHeader (root) {
+  if (!root) return
 
-export function initHeader () {
-  const header = document.querySelector('.pk-header')
+  const header = root.querySelector('.pk-header')
   if (!header) return
 
   // ── Modo del menú (única fuente: el CSS) ────────────────────────────────

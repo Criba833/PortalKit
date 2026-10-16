@@ -177,8 +177,18 @@
        INIT
     ------------------------------------------ */
 
+    // `fragmentElement` es el nodo raíz que Liferay inyecta para cada
+    // instancia del fragment. Consultar desde ahí garantiza que una
+    // instancia nunca inicialice ni manipule el accordion de otra.
     function initAllAccordions() {
-        const accordions = document.querySelectorAll(
+        if (
+            typeof fragmentElement === 'undefined' ||
+            !fragmentElement
+        ) {
+            return;
+        }
+
+        const accordions = fragmentElement.querySelectorAll(
             '.pk-accordion'
         );
 

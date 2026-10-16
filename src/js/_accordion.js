@@ -2,6 +2,10 @@
  * _accordion.js — Lógica del componente pk-accordion
  * Importar desde el entry del web-content:
  *   import { initAllAccordions } from '../../shared/js/_accordion.js'
+ *
+ * Recibe el nodo raíz desde el que resolver sus elementos. En la preview
+ * local es `document`; en Liferay el script.js equivalente resuelve desde
+ * `fragmentElement`. Así la lógica no queda atada a una selección global.
  */
 
 export function initAccordion (container) {
@@ -61,6 +65,7 @@ export function initAccordion (container) {
   openItem(active ?? items[0])
 }
 
-export function initAllAccordions () {
-  document.querySelectorAll('.pk-accordion').forEach(initAccordion)
+export function initAllAccordions (root) {
+  if (!root) return
+  root.querySelectorAll('.pk-accordion').forEach(initAccordion)
 }
