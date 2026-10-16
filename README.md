@@ -43,9 +43,13 @@ Usar un sistema automatizado que:
 ## Comandos rápidos
 
 ```bash
-npm run dev                          # dev server en http://localhost:5173
-npm run build:fragments              # build completo (fragments + web-content + client extensions)
-npm run build:extension -- [nombre] # build de una client extension específica
+npm run dev                          # dev server + preview en http://localhost:5173
+npm run build:liferay                # build completo de Liferay: fragments + web-content + client extensions
+npm run build:fragments              # build de fragments únicamente
+npm run build:web-content            # build de web content únicamente
+npm run build:extensions -- [nombre] # client extensions (todas, o solo [nombre])
+npm run clean                        # limpia dist/
+npm run preview                      # sirve dist/ (catálogo en /)
 ```
 
 ---

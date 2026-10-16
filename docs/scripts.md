@@ -1,39 +1,66 @@
 # Scripts de build
 
-Los scripts en `scripts/` se encargan del post-procesamiento tras el build de Vite.
+Los scripts en `scripts/` orquestan el build de Vite y ensamblan los artefactos
+que se suben a Liferay.
 
 ---
 
-## Cadena de comandos
+## Arquitectura de build
 
-`npm run build:fragments` ejecuta tres pasos en secuencia:
+Hay un build global (`build:liferay`) y builds independientes por tipo de
+artefacto. Cada comando compila con Vite lo que necesita y ensambla sus propios
+artefactos; ninguno depende de que se haya ejecutado otro antes.
 
 ```
-npm run build:fragments
-  ├── npm run build            ← Vite compila Pug → HTML, CSS → CSS, JS → bundle
-  ├── npm run liferay          ← build-liferay.js ensambla dist/fragments/ y dist/web-content/
-  └── npm run build:extensions ← build-client-extensions.js empaqueta dist/builds/
+npm run build:liferay        ← build completo de Liferay
+  ├── Vite (PK_BUILD_TARGET=all)                ← fragments + web-content en un solo pase
+  ├── assembleLiferay(fragments, web-content)   ← dist/fragments/ + dist/web-content/
+  └── buildExtensions()                         ← dist/builds/
+
+npm run build:fragments      ← Vite (solo fragments) + ensamblado de fragments
+npm run build:web-content    ← Vite (solo web-content) + ensamblado de web content
+npm run build:extensions     ← solo client extensions (dist/builds/)
 ```
 
-Cada paso puede ejecutarse por separado:
+`build:liferay` produce el entregable completo de Liferay (fragments, web content
+y client extensions); `build:fragments` y `build:web-content` generan solo su
+categoría. Los comandos de build ejecutan Vite, que emite el catálogo de preview
+(`dist/index.html`), de modo que `npm run preview` sirve el catálogo en `/`. Como
+parte del contrato de 5 archivos, el ensamblado elimina el `index.html` intermedio
+de cada componente, así que para previsualizar un componente concreto se usa
+`npm run dev`.
+
+Todos comparten las mismas implementaciones (`assembleLiferay` y
+`buildExtensions`); el build global no duplica la lógica ni repite el bundling:
+compila fragments y web-content en **un único** build de Vite.
+
+Puedes invocar el orquestador Liferay directamente:
 
 ```bash
-npm run build            # solo Vite
-npm run liferay          # solo ensamblado de fragments (requiere que Vite ya haya corrido)
-npm run build:extensions # solo client extensions
+node scripts/build-liferay.js all           # fragments + web-content + extensions
+node scripts/build-liferay.js fragments     # solo fragments
+node scripts/build-liferay.js web-content   # solo web-content
 ```
 
 ---
 
 ## `scripts/build-liferay.js`
 
-Ensambla los artefactos que Liferay necesita para cada fragment y web-content.
+Punto de entrada del build de Liferay. Ejecuta el bundling de Vite (una sola vez)
+y ensambla los artefactos que Liferay necesita para cada fragment y web-content.
+Con el target `all` también empaqueta las client extensions reutilizando
+`build-client-extensions.js`.
 
-**Cuándo corre:** automáticamente como parte de `npm run build:fragments` (`npm run build && npm run liferay && npm run build:extensions`). También puede ejecutarse solo:
+**Cuándo corre:** lo invocan `npm run build:liferay`, `npm run build:fragments` y
+`npm run build:web-content`. También puede ejecutarse solo:
 
 ```bash
-node scripts/build-liferay.js
+node scripts/build-liferay.js all
 ```
+
+El target determina qué categorías se compilan y ensamblan (`fragments`,
+`web-content` o ambas). El ensamblado es idempotente respecto de las categorías
+que no se piden: nunca toca ni borra la salida de la otra categoría.
 
 ### Qué hace
 
@@ -64,7 +91,9 @@ Al extraer el body limpia automáticamente:
 
 #### 2. CSS — `index.css`
 
-Recorre el manifest recursivamente para recopilar **todos** los archivos `.css` asociados al entry, incluyendo chunks compartidos. Los concatena en un solo `index.css`.
+Recorre el manifest recursivamente para recopilar **todos** los archivos `.css` asociados al entry, incluyendo chunks compartidos. Los concatena en un solo `index.css` autocontenido.
+
+Los assets con hash que Vite dejó en `dist/assets/` se eliminan al terminar de ensamblar (su contenido ya está dentro de cada `index.css`), de modo que no queden copias huérfanas. `dist/assets/` solo se conserva si aún contiene recursos genuinamente compartidos (p. ej. el CSS del catálogo de preview).
 
 #### 3. JS — `index.js`
 
@@ -88,15 +117,16 @@ Genera un archivo con el nombre del fragment: `# PortalKit Header`.
 
 Empaqueta cada client extension de `src/client-extensions/` como un bundle IIFE independiente.
 
-**Cuándo corre:** automáticamente como parte de `npm run build:fragments`. También puede ejecutarse solo:
+**Cuándo corre:** lo invoca `npm run build:extensions` (o el target `all` de
+`build-liferay.js`). También puede ejecutarse solo:
 
 ```bash
 # Buildear todas
 npm run build:extensions
 
 # Buildear solo una
-npm run build:extension -- gsap
-npm run build:extension -- swiperjs
+npm run build:extensions -- gsap
+npm run build:extensions -- swiperjs
 ```
 
 ### Qué hace
@@ -144,6 +174,19 @@ Corre **antes** de que Vite resuelva los inputs. Compila todos los `index.pug` a
 `discoverComponents()` escanea `src/fragments/` y `src/web-content/` y registra automáticamente cada carpeta con `index.html` como entry de Rollup. No hace falta declarar manualmente los entries — solo crear la carpeta.
 
 Depende de que `compilePugEntries()` ya haya generado los `.html` a partir de los `.pug`.
+
+### Build por target (`PK_BUILD_TARGET`)
+
+`vite.config.js` lee `process.env.PK_BUILD_TARGET` para limitar los entries:
+
+- `all` (por defecto) → fragments + web-content
+- `fragments` → solo fragments
+- `web-content` → solo web-content
+
+`scripts/build-liferay.js` define la variable antes de llamar a Vite. Con un
+target parcial (`emptyOutDir: false`) Vite **no** vacía `dist/`, así que los
+artefactos de la otra categoría se conservan; el target `all` parte de `dist/`
+limpio (`emptyOutDir: true`).
 
 ### `pugHmr()` plugin
 

@@ -16,9 +16,16 @@ npm install
 | Comando | Qué hace |
 |---|---|
 | `npm run dev` | Servidor local con HMR en `http://localhost:5173` |
-| `npm run build:fragments` | Build completo: fragments + web-content + client extensions |
+| `npm run build:liferay` | Build completo de Liferay: fragments + web-content + client extensions |
+| `npm run build:fragments` | Solo fragments (Vite + ensamblado Liferay) |
+| `npm run build:web-content` | Solo web content (Vite + ensamblado Liferay) |
 | `npm run build:extensions` | Solo client extensions (gsap, swiperjs, etc.) |
-| `npm run build:extension -- gsap` | Solo la client extension indicada |
+| `npm run build:extensions -- gsap` | Solo la client extension indicada |
+| `npm run preview` | Sirve `dist/` (catálogo en `/`) |
+| `npm run clean` | Borra `dist/` |
+
+Cada comando de build es autónomo: compila con Vite lo que necesita y ensambla sus
+artefactos. No hace falta ejecutar otro comando antes.
 
 ## Flujo de desarrollo
 
@@ -33,7 +40,7 @@ npm install
 ## Flujo de build y deploy
 
 ```
-1. npm run build:fragments
+1. npm run build:liferay
 2. Sube dist/fragments/[nombre]/      → Liferay: Site Builder → Fragments
 3. Sube dist/web-content/[nombre]/   → Liferay: Content → Web Content → Templates
 4. Sube dist/builds/[nombre]/[nombre].js → Liferay: Documents & Media
@@ -91,7 +98,7 @@ npm install mi-libreria
 4. Buildear:
 
 ```bash
-npm run build:extension -- mi-libreria
+npm run build:extensions -- mi-libreria
 ```
 
 Salida: `dist/builds/mi-libreria/mi-libreria.js`

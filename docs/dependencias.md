@@ -49,7 +49,7 @@ window.MiLibreria = MiLibreria
 ### 5. Buildear
 
 ```bash
-npm run build:extension -- mi-libreria
+npm run build:extensions -- mi-libreria
 ```
 
 Salida: `dist/builds/mi-libreria/mi-libreria.js`
@@ -397,7 +397,7 @@ window.motion = { animate, spring, inView, scroll }
 **3. Buildear y subir a Liferay**
 
 ```bash
-npm run build:extension -- motion
+npm run build:extensions -- motion
 ```
 
 En Liferay: eliminar la client extension de GSAP y añadir la de Motion.
@@ -445,7 +445,7 @@ window.Splide = Splide
 **3. Buildear y subir a Liferay**
 
 ```bash
-npm run build:extension -- splide
+npm run build:extensions -- splide
 ```
 
 En Liferay: eliminar Swiper JS y Swiper CSS, añadir Splide JS y Splide CSS (el build genera ambos automáticamente porque el `index.js` importa el CSS).
@@ -484,7 +484,7 @@ window.EmblaCarousel = EmblaCarousel
 **3. Buildear y subir a Liferay**
 
 ```bash
-npm run build:extension -- embla
+npm run build:extensions -- embla
 ```
 
 **4. Uso desde un fragment**
