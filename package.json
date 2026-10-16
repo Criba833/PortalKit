@@ -6,12 +6,12 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview",
-		"liferay": "node scripts/build-liferay.js",
-		"build:fragments": "npm run build && npm run liferay && npm run build:extensions",
+		"build:liferay": "node scripts/build-liferay.js all",
+		"build:fragments": "node scripts/build-liferay.js fragments",
+		"build:web-content": "node scripts/build-liferay.js web-content",
 		"build:extensions": "node scripts/build-client-extensions.js",
-		"build:extension": "node scripts/build-client-extensions.js"
+		"clean": "node scripts/clean-dist.js",
+		"preview": "vite preview"
 	},
 	"keywords": [
 		"liferay",

@@ -12,6 +12,20 @@ import { renderFile } from 'pug'
 const SRC = resolve('src')
 
 // ─────────────────────────────────────────────────────────────────────────────
+// BUILD TARGET
+//
+// Permite builds parciales. `build:fragments` y `build:web-content` compilan
+// solo su categoría, de modo que no sobrescriben los artefactos de la otra
+// (Vite escribe el JS de cada entry en la misma ruta que el artefacto Liferay).
+// El build global (`build:liferay`) compila todas. El dev server no define la
+// variable, así que también compila todo.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const BUILD_TARGET    = process.env.PK_BUILD_TARGET || 'all'
+const buildFragments  = BUILD_TARGET === 'all' || BUILD_TARGET === 'fragments'
+const buildWebContent = BUILD_TARGET === 'all' || BUILD_TARGET === 'web-content'
+
+// ─────────────────────────────────────────────────────────────────────────────
 // PUG PRE-COMPILATION
 //
 // Compila index.pug → index.html antes de que Vite resuelva los inputs.
@@ -34,8 +48,10 @@ function compilePugEntries() {
     // enlaces inventados ni una copia que se pueda desincronizar. Pug sigue
     // siendo el mecanismo del proyecto y el pugHmr lo regenera al editarlo.
     //
-    // No se declara en rollupOptions.input, así que no entra en el build ni
-    // en los artefactos que ensambla scripts/build-liferay.js.
+    // Se declara en rollupOptions.input (clave `index`) para que el build
+    // emita dist/index.html y `npm run preview` sirva el catálogo en '/'.
+    // No lo ensambla scripts/build-liferay.js: su ENTRY_RE solo reconoce
+    // entries de fragments/ y web-content/.
     compile(previewPug, join(SRC, 'index.html'))
   }
 
@@ -248,7 +264,10 @@ export default defineConfig({
   // ── BUILD ─────────────────────────────────────────────────────────────────
   build: {
     outDir: resolve('dist'),
-    emptyOutDir: true,
+
+    // Un build parcial conserva los artefactos ya generados de la otra
+    // categoría; el build global (`all`) parte de un dist/ limpio.
+    emptyOutDir: BUILD_TARGET === 'all',
 
     minify: false,
     cssMinify: false,
@@ -261,17 +280,22 @@ export default defineConfig({
 
     rollupOptions: {
       input: {
+        // Catálogo de preview en la raíz del build → dist/index.html, para que
+        // `npm run preview` lo sirva en '/'. Es el MISMO index.pug que la
+        // entrada `preview/index` (sin markup duplicado ni segunda fuente de
+        // verdad). El ensamblado de Liferay lo ignora: su ENTRY_RE solo
+        // reconoce entries de fragments/ y web-content/.
+        'index': resolve('src/index.html'),
+
         'preview/index': resolve('src/views/index.html'),
 
-        ...discoverComponents(
-          resolve('src/fragments'),
-          'fragments',
-        ),
+        ...(buildFragments
+          ? discoverComponents(resolve('src/fragments'), 'fragments')
+          : {}),
 
-        ...discoverComponents(
-          resolve('src/web-content'),
-          'web-content',
-        ),
+        ...(buildWebContent
+          ? discoverComponents(resolve('src/web-content'), 'web-content')
+          : {}),
       },
 
       output: {

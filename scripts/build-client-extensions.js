@@ -1,6 +1,7 @@
 import { build } from 'vite';
 import { readdirSync, existsSync, statSync } from 'fs';
 import { resolve, join } from 'path';
+import { pathToFileURL } from 'url';
 
 const ROOT    = resolve(import.meta.dirname, '..');
 const SRC_DIR = join(ROOT, 'src/client-extensions');
@@ -52,21 +53,19 @@ async function buildExtension(name) {
 	}
 }
 
-async function main() {
-	const target = process.argv[2];
+export async function buildExtensions (target) {
 	const extensions = discoverExtensions();
 
 	if (extensions.length === 0) {
-		console.error('No extensions found in src/client-extensions/');
-		process.exit(1);
+		throw new Error('No extensions found in src/client-extensions/');
 	}
 
 	const toRun = target ? [target] : extensions;
 	const missing = toRun.filter((n) => !extensions.includes(n));
 	if (missing.length) {
-		console.error(`Extension not found: ${missing.join(', ')}`);
-		console.error(`Available: ${extensions.join(', ')}`);
-		process.exit(1);
+		throw new Error(
+			`Extension not found: ${missing.join(', ')}. Available: ${extensions.join(', ')}`,
+		);
 	}
 
 	const failed = [];
@@ -80,11 +79,17 @@ async function main() {
 	}
 
 	if (failed.length) {
-		console.error(`\nFailed extensions: ${failed.join(', ')}`);
-		process.exit(1);
+		throw new Error(`Failed extensions: ${failed.join(', ')}`);
 	}
 
 	console.log('\nAll extensions built successfully.');
 }
 
-main();
+// Auto-ejecución solo cuando el archivo se invoca directamente:
+//   node scripts/build-client-extensions.js [nombre]
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+	buildExtensions(process.argv[2]).catch((err) => {
+		console.error(err.message);
+		process.exit(1);
+	});
+}
