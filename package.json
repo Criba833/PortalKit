@@ -1,35 +1,35 @@
 {
-	"name": "portalkit",
-	"version": "2.0.0",
-	"description": "PortalKit — Liferay DXP fragments and web content with Vite",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build:liferay": "node scripts/build-liferay.js all",
-		"build:fragments": "node scripts/build-liferay.js fragments",
-		"build:web-content": "node scripts/build-liferay.js web-content",
-		"build:extensions": "node scripts/build-client-extensions.js",
-		"clean": "node scripts/clean-dist.js",
-		"preview": "vite preview"
-	},
-	"keywords": [
-		"liferay",
-		"fragments",
-		"vite"
-	],
-	"license": "UNLICENSED",
-	"engines": {
-		"node": ">=20"
-	},
-	"devDependencies": {
-		"autoprefixer": "^10.4.19",
-		"postcss": "^8.4.38",
-		"pug": "^3.0.4",
-		"vite": "^8.3.4"
-	},
-	"dependencies": {
-		"gsap": "^3.15.0",
-		"swiper": "^14.3.0"
-	}
+  "name": "portalkit",
+  "version": "2.0.0",
+  "description": "PortalKit — Liferay DXP fragments and web content with Vite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:liferay": "node scripts/build-liferay.js all",
+    "build:fragments": "node scripts/build-liferay.js fragments",
+    "build:web-content": "node scripts/build-liferay.js web-content",
+    "build:extensions": "node scripts/build-client-extensions.js",
+    "clean": "node scripts/clean-dist.js",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "liferay",
+    "fragments",
+    "vite"
+  ],
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "pug": "^3.0.4",
+    "vite": "^8.3.4"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "swiper": "^14.3.0"
+  }
 }
